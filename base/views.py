@@ -1,5 +1,11 @@
 # Django
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+)
+    
 from django.urls import reverse_lazy
 
 # Models
@@ -18,6 +24,13 @@ class TaskDetail(DetailView):
 
 
 class TaskCreate(CreateView):
+
+    model = Task
+    fields = '__all__'
+    success_url = reverse_lazy('base:feed')
+
+
+class TaskUpdate(UpdateView):
 
     model = Task
     fields = '__all__'
