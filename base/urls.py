@@ -6,5 +6,6 @@ from base import views
 
 app_name = 'base'
 urlpatterns = [
-    path('', views.main)
+    path('', views.TaskList.as_view(), name='feed'),
+
 ]
