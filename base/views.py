@@ -4,6 +4,7 @@ from django.views.generic import (
     DetailView,
     CreateView,
     UpdateView,
+    DeleteView
 )
     
 from django.urls import reverse_lazy
@@ -34,4 +35,10 @@ class TaskUpdate(UpdateView):
 
     model = Task
     fields = '__all__'
+    success_url = reverse_lazy('base:feed')
+
+
+class TaskDelete(DeleteView):
+    model = Task
+    context_object_name = 'task'
     success_url = reverse_lazy('base:feed')
