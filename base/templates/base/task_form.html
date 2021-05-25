@@ -1,0 +1,9 @@
+<h1>Create Task</h1>
+<form method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Save">
+</form>
+<a href="{% url 'base:feed' %}">Go back</a>
