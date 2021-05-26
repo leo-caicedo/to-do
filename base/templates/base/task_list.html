@@ -1,8 +1,15 @@
 <h1>My to do list</h1>
+<p>{{ request.user }}</p>
 <div>
     <a href="{% url 'base:logout' %}">Logout</a>
 </div>
 <a href="{% url 'base:create' %}">Add Task</a>
+
+<form method="GET">
+    <input type="text" name="search-area" value="{{ search_input }}">
+    <input type="submit" value="Search">
+</form>
+
 <table>
     <tr>
         <th>Item</th>
