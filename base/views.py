@@ -6,7 +6,8 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from django.contrib.auth.views import LoginView    
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.mixins import LoginRequiredMixin   
 from django.urls import reverse_lazy
 
 # Models
@@ -23,33 +24,33 @@ class CustomerLoginView(LoginView):
         return reverse_lazy('base:feed')
 
 
-class TaskList(ListView):
+class TaskList(LoginRequiredMixin,ListView):
     
     model = Task
     context_object_name = 'tasks'
 
 
-class TaskDetail(DetailView):
+class TaskDetail(LoginRequiredMixin,DetailView):
 
     model = Task
     context_object_name = 'task'
 
 
-class TaskCreate(CreateView):
+class TaskCreate(LoginRequiredMixin,CreateView):
 
     model = Task
     fields = '__all__'
     success_url = reverse_lazy('base:feed')
 
 
-class TaskUpdate(UpdateView):
+class TaskUpdate(LoginRequiredMixin,UpdateView):
 
     model = Task
     fields = '__all__'
     success_url = reverse_lazy('base:feed')
 
 
-class TaskDelete(DeleteView):
+class TaskDelete(LoginRequiredMixin,DeleteView):
     model = Task
     context_object_name = 'task'
     success_url = reverse_lazy('base:feed')
